@@ -15,7 +15,9 @@ contract Gateway {
     using SafeERC20 for IERC20;
 
     IERC20 public currency;
+
     address public owner;
+    address public factory;
 
     mapping(uint256 => Invoice) public invoices;
 
@@ -27,12 +29,13 @@ contract Gateway {
     );
 
     constructor(address currencyAddress, address owner_) {
+        factory = msg.sender;
         currency = IERC20(currencyAddress);
         owner = owner_;
     }
 
     function payInvoice(uint256 id, uint256 amount) external {
-        require(invoices[id].id > 0, "Invoice already payed");
+        require(invoices[id].id == 0, "Invoice already payed");
 
         // Transfer
         currency.safeTransferFrom(msg.sender, owner, amount);
