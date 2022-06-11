@@ -6,8 +6,6 @@ import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
 import "./Gateway.sol";
 
-import "hardhat/console.sol";
-
 struct GatewayContract {
     address owner;
     address contractAddress;
