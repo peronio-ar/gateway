@@ -32,8 +32,8 @@ contract Gateway {
         owner = owner_;
     }
 
-    function payInvoice(uint256 id, uint256 amount) external {
-        require(invoices[id].id == 0, "Invoice already payed");
+    function payInvoice(string memory id, uint256 amount) external  {
+        require(invoices[id].date == 0 , "Invoice already payed");   
 
         // Transfer
         currency.safeTransferFrom(msg.sender, owner, amount);
