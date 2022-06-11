@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
 struct Invoice {
-    uint256 id;
+    string id;
     address payer;
     uint256 amount;
     uint256 date;
@@ -19,10 +19,10 @@ contract Gateway {
     address public owner;
     address public factory;
 
-    mapping(uint256 => Invoice) public invoices;
+    mapping(string => Invoice) public invoices;
 
     event Payment(
-        uint256 indexed id,
+        string  id,
         address indexed payer,
         uint256 amount,
         uint256 date
