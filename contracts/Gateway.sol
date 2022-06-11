@@ -17,7 +17,6 @@ contract Gateway {
     IERC20 public currency;
 
     address public owner;
-    address public factory;
 
     mapping(string => Invoice) public invoices;
 
@@ -29,7 +28,6 @@ contract Gateway {
     );
 
     constructor(address currencyAddress, address owner_) {
-        factory = msg.sender;
         currency = IERC20(currencyAddress);
         owner = owner_;
     }
