@@ -15,7 +15,6 @@ contract Gateway {
     using SafeERC20 for IERC20;
 
     IERC20 public currency;
-
     address public owner;
 
     mapping(string => Invoice) public invoices;
@@ -36,7 +35,7 @@ contract Gateway {
         require(invoices[id].date == 0 , "Invoice already payed");   
 
         // Transfer
-        currency.safeTransferFrom(msg.sender, owner, amount);
+        currency.safeTransferFrom(msg.sender, owner, amount);  
 
         // Add invoice to invoices mapping
         invoices[id] = Invoice(id, msg.sender, amount, block.timestamp);
